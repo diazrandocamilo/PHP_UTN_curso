@@ -49,27 +49,30 @@
                 }       
         }
         else{
-            echo "aun no ingresó la cantidad de tigres";
+            echo "<p>aun no ingresó la cantidad de tigres</p>";
         }
         if (isset($_GET["usuario"]) && isset($_GET["contraseña"])){
             $usuario=$_GET["usuario"];
             $contraseña=$_GET["contraseña"];
             $tomados=["Juan","Pepe","José","Pedro"];
-            $tomadas=["1234","contraseña","Juan"];
             if (in_array($usuario, $tomados)) {
                 echo "<p>este usuario ya ha sido tomado elige otro </p>";
                 }
             else {
-                if (in_array($contraseña, $tomadas)) {
-                    echo "<p> su contraseña ya ha sido tomada </p>";
+                if (strlen($contraseña)==0) {
+                    echo "<p>complete su usuario y contraseña</p>";
                 }
+                elseif (strlen($contraseña)<= 4) {
+                    echo "su contraseña es muy corta, tiene que tener mas que 4 caracteres";
+                }
+
                 else{
                     echo "<p>se registro su nombre " . $usuario . " correctamente</p>";
                 }
             }
         }
         else{
-            echo "<p> esperamos a que complete el formulario</p>";
+            echo "<p>complete su usuario y contraseña</p>";
         }
         
     ?>
